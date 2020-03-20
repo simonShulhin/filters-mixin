@@ -3,40 +3,22 @@
     <div class="row">
       <div class="col-xs-12 col-sm-8 col-sm-offset2 col-md-6 col-md-offset-3">
         <h1>FIlters and Mixins</h1>
-        <p>{{ text | toUpperCase | toLowercase }}</p>
-        <p>{{ text.toUpperCase() }}</p>
-        <p>{{ text }}</p>
         <hr />
-        <button @click="fruits.push('berries')">Add New Item</button>
         <input type="text" v-model="filterText" />
         <ul>
           <li v-for="fruit in filteredFruits" :key="fruit.id">{{ fruit }}</li>
         </ul>
-        <hr />
-        <List />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { fruitMixin } from './fruit-mixin';
-import List from './components/List';
-
+import { fruitMixin } from '../fruit-mixin';
 export default {
-  components: {
-    List,
-  },
-
   mixins: [fruitMixin],
-
-  data: () => ({
-    text: 'Hello there',
-  }),
-  filters: {
-    toUpperCase(value) {
-      return value.toUpperCase();
-    },
+  created() {
+    console.log('List Created');
   },
 };
 </script>
